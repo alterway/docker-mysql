@@ -1,0 +1,19 @@
+stages:
+  - build
+
+variables:
+  REGISTRY: hub.alterway.fr
+
+before_script:
+  - if [[ "$CI_BUILD_REF_NAME" != master ]]; then REGISTRY="$REGISTRY/$CI_BUILD_REF_NAME"; fi
+
+build:
+  stage: build
+  script:
+    - docker build --pull -t $REGISTRY/mysql:5.6 5.6/
+    - docker build --pull -t $REGISTRY/mysql:5.5 5.5/
+    - docker push $REGISTRY/mysql:5.6
+    - docker push $REGISTRY/mysql:5.5
+  only:
+    - preprod
+    - master
