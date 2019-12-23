@@ -4,6 +4,7 @@
 
 - Mysql/5.5 - (docker tags: `5.5`) - `docker pull alterway/mysql:5.5`
 - Mysql/5.6 - (docker tags: `5.6`) - `docker pull alterway/mysql:5.6`
+- Mysql/5.7 - (docker tags: `5.7`) - `docker pull alterway/mysql:5.7`
 
 
 
