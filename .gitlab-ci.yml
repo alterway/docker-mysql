@@ -7,7 +7,7 @@ variables:
 
 before_script:
   - if [[ "$CI_BUILD_REF_NAME" != master ]]; then REGISTRY="$REGISTRY/$CI_BUILD_REF_NAME"; fi
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  - if [[ "$CI_BUILD_REF_NAME" = "master" ]]; then docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY; fi
 
 build:
   stage: build
