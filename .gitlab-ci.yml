@@ -26,12 +26,15 @@ publish:
   stage: publish
   script:
     - docker pull -q $REGISTRY/mysql:5.5
+    - docker tag $REGISTRY/mysql:5.5 $CI_REGISTRY_IMAGE:5.5
     - docker push $CI_REGISTRY_IMAGE:5.5
    
     - docker pull -q $REGISTRY/mysql:5.6
+    - docker tag $REGISTRY/mysql:5.6 $CI_REGISTRY_IMAGE:5.6
     - docker push  $CI_REGISTRY_IMAGE:5.6
 
     - docker pull -q $REGISTRY/mysql:5.7
+    - docker tag $REGISTRY/mysql:5.7 $CI_REGISTRY_IMAGE:5.7
     - docker push  $CI_REGISTRY_IMAGE:5.7
 
   only:
