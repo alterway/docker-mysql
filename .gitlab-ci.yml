@@ -1,3 +1,14 @@
+variables:
+  # Debug and tracing.
+  CI_DEBUG_TRACE: "true"
+  #GIT_CURL_VERBOSE: "1"
+  #GIT_DEBUG_LOOKUP: "1"
+  #GIT_TRACE: "1"
+  #GIT_TRACE_PACKET: "1"
+  #GIT_TRANSLOOP_DEBUG: "1"
+  #GIT_TRANSPORT_HELPER_DEBUG: "1"
+
+
 stages:
   - build
 
