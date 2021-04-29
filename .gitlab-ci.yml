@@ -27,8 +27,11 @@ stages:
          fi
 
 before_script:
-  - if [[ "$CI_BUILD_REF_NAME" != master ]]; then echo $AW_REGISTRY_PASSWORD | docker login -u "$AW_REGISTRY_USER" --password-stdin $AW_REGISTRY; AW_REGISTRY="$AW_REGISTRY/$CI_BUILD_REF_NAME"; fi
-  - if [[ "$CI_BUILD_REF_NAME"  = "master" ]]; then docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY; fi
+  #- if [[ "$CI_BUILD_REF_NAME" != master ]]; then echo $AW_REGISTRY_PASSWORD | docker login -u "$AW_REGISTRY_USER" --password-stdin $AW_REGISTRY; AW_REGISTRY="$AW_REGISTRY/$CI_BUILD_REF_NAME"; fi
+  #- if [[ "$CI_BUILD_REF_NAME"  = "master" ]]; then docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY; fi
+  - echo $AW_REGISTRY_PASSWORD | docker login -u "$AW_REGISTRY_USER" --password-stdin $AW_REGISTRY
+  - echo $CI_REGISTRY_PASSWORD | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
   - export NAMESPACE=$AW_REGISTRY/library
 
 '8.0':
