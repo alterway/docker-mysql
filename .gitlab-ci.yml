@@ -1,6 +1,6 @@
 variables:
   # Debug and tracing.
-  CI_DEBUG_TRACE: "true"
+  #CI_DEBUG_TRACE: "true"
   #GIT_CURL_VERBOSE: "1"
   #GIT_DEBUG_LOOKUP: "1"
   #GIT_TRACE: "1"
@@ -18,11 +18,11 @@ stages:
     - preprod
     - master
   script:
-    - docker build --pull -t "$NAMESPACE/mysql:${CI_JOB_NAME}" "${CI_JOB_NAME}/" >> /dev/null
+    - docker build --pull -t "$NAMESPACE/mysql:${CI_JOB_NAME}" "${CI_JOB_NAME}/" 
     - docker push "$NAMESPACE/mysql:${CI_JOB_NAME}" > /dev/null
     - |
          if [[ "$CI_BUILD_REF_NAME" = "master" ]]; then
-           docker tag  "$NAMESPACE/mysql:${CI_JOB_NAME}" "$CI_REGISTRY_IMAGE:${CI_JOB_NAME}" > /dev/null
+           docker tag  "$NAMESPACE/mysql:${CI_JOB_NAME}" "$CI_REGISTRY_IMAGE:${CI_JOB_NAME}"
            docker push "$CI_REGISTRY_IMAGE:${CI_JOB_NAME}" > /dev/null
          fi
 
