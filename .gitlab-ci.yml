@@ -1,6 +1,6 @@
 variables:
   # Debug and tracing.
-  #CI_DEBUG_TRACE: "true"
+  CI_DEBUG_TRACE: "true"
   #GIT_CURL_VERBOSE: "1"
   #GIT_DEBUG_LOOKUP: "1"
   #GIT_TRACE: "1"
