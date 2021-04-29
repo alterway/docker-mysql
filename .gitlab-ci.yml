@@ -1,5 +1,8 @@
 stages:
   - build
+
+env:
+  CI_DEBUG_TRACE: true
   
 .build_push_template: &build_push_definition
   stage: build
